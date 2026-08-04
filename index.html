@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zeynep S. Amac — Intelligent Systems Engineering</title>
+<meta name="description" content="Portfolio of Zeynep S. Amac — Intelligent Systems Engineering student, network &amp; anatomical data visualization, research assistant at the Cyberinfrastructure for Network Science Center.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header class="site-header">
+  <a href="#top" class="mark">ZA<span class="mark-dot">·</span></a>
+  <nav class="main-nav">
+    <a href="#work">Work</a>
+    <a href="#log">Experience</a>
+    <a href="#legend">Skills</a>
+    <a href="#about">About</a>
+    <a href="#contact" class="nav-cta">Contact</a>
+  </nav>
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" aria-label="Introduction">
+    <div class="hero-text">
+      <p class="eyebrow">Fig. 00 — Specimen card</p>
+      <h1>Mapping the human body,<br> one figure at a time.</h1>
+      <p class="hero-sub">
+        I'm Zeynep — an Intelligent Systems Engineering student at Indiana University
+        (Bioengineering concentration), building visualization pipelines for the
+        Human Reference Atlas and other systems where biology meets code.
+      </p>
+      <div class="hero-actions">
+        <a href="#work" class="btn btn-primary">See the work</a>
+        <a href="assets/Zeynep_S_Amac_CV.pdf" class="btn btn-ghost" id="resume-link">Download CV</a>
+      </div>
+      <p class="hero-location">Bloomington, Indiana</p>
+    </div>
+    <div class="hero-figure" aria-hidden="true">
+      <svg id="tree-svg" viewBox="0 0 480 520" xmlns="http://www.w3.org/2000/svg">
+        <!-- populated / animated via script.js -->
+      </svg>
+    </div>
+  </section>
+
+  <!-- ============ LEGEND / SKILLS ============ -->
+  <section id="legend" class="legend">
+    <p class="eyebrow">Fig. 01 — Legend</p>
+    <h2>Tools of the trade</h2>
+    <div class="legend-grid">
+      <div class="legend-group">
+        <h3>Languages</h3>
+        <ul class="tag-list" data-tags="Python, C, R"></ul>
+      </div>
+      <div class="legend-group">
+        <h3>AI &amp; dev tools</h3>
+        <ul class="tag-list" data-tags="ChatGPT, Microsoft Copilot, Git / GitHub, Linux"></ul>
+      </div>
+      <div class="legend-group">
+        <h3>Libraries &amp; visualization</h3>
+        <ul class="tag-list" data-tags="Pandas, NetworkX, NumPy, Matplotlib, Vega, Jupyter, Gephi"></ul>
+      </div>
+      <div class="legend-group">
+        <h3>Design &amp; creative</h3>
+        <ul class="tag-list" data-tags="Photoshop, Illustrator, Premiere Pro, Lightroom, InDesign, Fusion 360, PrusaSlicer"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS (rendered from JS) ============ -->
+  <section id="work" class="work">
+    <p class="eyebrow">Fig. 02 — Plates</p>
+    <h2>Selected work</h2>
+    <p class="section-note">
+      This section reads from a single list in <code>script.js</code> —
+      add a new object to the <code>projects</code> array to plug in more work here.
+    </p>
+    <div class="project-grid" id="project-grid">
+      <!-- injected by script.js -->
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE LOG ============ -->
+  <section id="log" class="log">
+    <p class="eyebrow">Fig. 03 — Specimen log</p>
+    <h2>Experience</h2>
+    <ol class="log-list">
+
+      <li class="log-entry">
+        <div class="log-date"><span>Jul 2024</span><span>— Present</span></div>
+        <div class="log-body">
+          <h3>Undergraduate Research Assistant</h3>
+          <p class="log-org">Cyberinfrastructure for Network Science Center (CNS)</p>
+          <ul>
+            <li>Updated and validated 4,000+ anatomical structures for the Human Reference Atlas using Python &amp; Jupyter.</li>
+            <li>Adapted the visualization pipeline to generate organ-specific multiscale trees.</li>
+            <li>Built and documented a Python utility that automated repetitive visualization updates for future Atlas releases.</li>
+            <li>Presented Atlas visualization research at the IU 2025 Summer Poster Symposium.</li>
+            <li>Produced visual content for <em>Atlas of Macroscopes</em>, published by The MIT Press.</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="log-entry">
+        <div class="log-date"><span>Nov 2025</span><span>— Present</span></div>
+        <div class="log-body">
+          <h3>Teaching Assistant</h3>
+          <p class="log-org">Indiana University — Innovation &amp; Design (ENGR E-101)</p>
+          <ul>
+            <li>Grade assignments and mentor students during class and office hours for a class of 33.</li>
+            <li>Guide students through engineering and design fundamentals.</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="log-entry">
+        <div class="log-date"><span>Apr 2024</span><span>— May 2025</span></div>
+        <div class="log-body">
+          <h3>Front Cashier &amp; Server</h3>
+          <p class="log-org">Fazoli's Restaurant, Bloomington, IN</p>
+          <ul>
+            <li>Communicated with guests to provide excellent customer service and handled cash transactions efficiently.</li>
+          </ul>
+        </div>
+      </li>
+
+    </ol>
+  </section>
+
+  <!-- ============ ABOUT / COMMUNITY / CONFERENCES ============ -->
+  <section id="about" class="about">
+    <p class="eyebrow">Fig. 04 — Field notes</p>
+    <div class="about-grid">
+      <div class="about-main">
+        <h2>About</h2>
+        <p>
+          I'm a Bachelor of Science candidate in Intelligent Systems Engineering
+          (Bioengineering concentration) at Indiana University, graduating May 2029.
+          I'm a Luddy Living Learning member, Hutton Honors Scholar, Provost Scholar,
+          and Groups Scholar.
+        </p>
+        <p>
+          My work sits at the intersection of biology, data visualization, and design —
+          I like taking a dataset with real anatomical or ecological structure and
+          finding the clearest way to show what's actually going on inside it.
+        </p>
+      </div>
+      <div class="about-side">
+        <div class="about-block">
+          <h3>Community</h3>
+          <ul class="plain-list">
+            <li>
+              <strong>Director of Marketing &amp; Communications</strong> — ColorStack at IU
+              <span class="muted">Apr 2026 — Present</span>
+            </li>
+            <li>
+              <strong>Member</strong> — Turkish Student Association at IU
+              <span class="muted">Aug 2025 — Present, organizes annual events for 300+ attendees</span>
+            </li>
+          </ul>
+        </div>
+        <div class="about-block">
+          <h3>Conferences</h3>
+          <ul class="plain-list">
+            <li>
+              <strong>Grace Hopper Celebration</strong> — Chicago, IL
+              <span class="muted">Nov 2025 — one of 40 students selected from 200+ applicants</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="contact">
+    <p class="eyebrow">Fig. 05 — Specimen contact</p>
+    <h2>Let's talk</h2>
+    <p class="contact-sub">Open to research collaborations, internships, and interesting visualization problems.</p>
+    <div class="contact-links">
+      <a href="mailto:zsamac@iu.edu">zsamac@iu.edu</a>
+      <a href="https://www.linkedin.com/in/zeynep-amac/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>Zeynep S. Amac — Bloomington, IN</p>
+  <p class="footer-note">Built with plain HTML, CSS &amp; JS · deploy via GitHub Pages</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
