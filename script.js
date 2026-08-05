@@ -92,4 +92,13 @@ document.addEventListener("DOMContentLoaded", () => {
   renderProjects();
   renderTagLists();
   initNavToggle();
+  initBackToTop();
 });
+
+function initBackToTop() {
+  const btn = document.querySelector(".back-to-top");
+  if (!btn) return;
+  window.addEventListener("scroll", () => {
+    btn.classList.toggle("visible", window.scrollY > 400);
+  });
+}

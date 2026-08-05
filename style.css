@@ -23,7 +23,33 @@ html, body {
   --max: 1180px;
   --gutter: clamp(1.5rem, 4vw, 4rem);
 }
-
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 40;
+}
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.back-to-top:hover {
+  background: var(--red);
+  transform: translateY(-2px);
+}
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
