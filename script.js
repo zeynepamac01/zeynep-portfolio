@@ -49,11 +49,7 @@ function renderProjects() {
           : ``}
       </div>
     </article>
-  `).join("") + `
-    <article class="project-card add-card">
-      <p>+ Add another project in <code>script.js</code></p>
-    </article>
-  `;
+  `).join("");
 }
 
 /* ============================================================
