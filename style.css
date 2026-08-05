@@ -16,9 +16,9 @@ html, body {
   --teal: #2b4f4a;
   --gold: #C08A2E;
 
-  --display: 'Roboto', serif;
-  --body: 'Inter', sans-serif;
-  --mono: 'IBM Plex Mono', monospace;
+  --display: 'Roboto', sans-serif;
+  --body: 'Roboto', sans-serif;
+  --mono: 'Roboto', sans-serif;
 
   --max: 1180px;
   --gutter: clamp(1.5rem, 4vw, 4rem);
