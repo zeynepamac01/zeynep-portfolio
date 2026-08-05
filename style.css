@@ -1,6 +1,10 @@
 /* ============================================================
    TOKENS
    ============================================================ */
+
+html, body {
+  overflow-x: hidden;
+}
 :root {
   --paper: #EEF0E8;
   --paper-raised: #e8ecd4;
@@ -146,6 +150,7 @@ section { position: relative; z-index: 1; }
   gap: 1.2rem;
   max-width: 640px;
   margin: 0 auto;
+  min-height: calc(100vh - 73px);
   padding: clamp(4rem, 10vh, 7rem) var(--gutter) clamp(3rem, 8vh, 5rem);
 }
 
@@ -187,7 +192,7 @@ section { position: relative; z-index: 1; }
 .legend-grid {
   margin-top: 2rem;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 2rem;
 }
 .legend-group h3 {
@@ -232,7 +237,7 @@ section { position: relative; z-index: 1; }
    ============================================================ */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.5rem;
 }
 .project-card {
