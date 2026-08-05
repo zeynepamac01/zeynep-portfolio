@@ -6,7 +6,7 @@
    ============================================================ */
 const projects = [
   {
-    fig: "Fig. 02.1",
+    fig: "Project 01",
     title: "Human Reference Atlas — Organ Visualization",
     desc: "A Vega-based pipeline that generates organ-specific multiscale anatomical trees, with reusable Python workflows and config files for future Atlas releases.",
     tags: ["Python", "Vega", "Jupyter"],
@@ -14,7 +14,7 @@ const projects = [
     linkLabel: "View repo"
   },
   {
-    fig: "Fig. 02.2",
+    fig: "Project 02",
     title: "Environmental Awareness Bee Game",
     desc: "A grid-based educational game built in C, using arrays, structs, and file handling to teach environmental decision-making through gameplay.",
     tags: ["C", "Game logic"],
@@ -22,7 +22,7 @@ const projects = [
     linkLabel: "View repo"
   },
   {
-    fig: "Fig. 02.3",
+    fig: "Project 03",
     title: "Robot Rescue",
     desc: "An educational board game teaching AI literacy and iterative learning to students ages 10–14, presented as a completed prototype to peers and instructors.",
     tags: ["Design", "Education"],
