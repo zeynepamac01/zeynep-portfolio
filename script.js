@@ -70,71 +70,6 @@ function renderTagLists() {
    HERO TREE — Body -> Organ -> Tissue -> Cell
    Built programmatically so it's easy to relabel.
    ============================================================ */
-function renderTree() {
-  const svg = document.getElementById("tree-svg");
-  if (!svg) return;
-
-  const levels = [
-    { y: 40,  labels: ["Body"] },
-    { y: 190, labels: ["Skeletal", "Cardiovascular", "Nervous"] },
-    { y: 340, labels: ["Tissue", "Tissue", "Tissue", "Tissue"] },
-    { y: 480, labels: ["Cell", "Cell", "Cell", "Cell", "Cell"] }
-  ];
-
-  const width = 480;
-  let svgContent = "";
-  const nodePositions = [];
-
-  levels.forEach((level, li) => {
-    const count = level.labels.length;
-    const spacing = width / (count + 1);
-    const positions = level.labels.map((label, i) => ({
-      x: spacing * (i + 1),
-      y: level.y,
-      label
-    }));
-    nodePositions.push(positions);
-  });
-
-  // edges: connect each node to nearest parent(s)
-  for (let li = 1; li < nodePositions.length; li++) {
-    const parents = nodePositions[li - 1];
-    const children = nodePositions[li];
-    children.forEach((child, ci) => {
-      const parentIdx = Math.floor(ci * parents.length / children.length);
-      const parent = parents[Math.min(parentIdx, parents.length - 1)];
-      const midY = (parent.y + child.y) / 2;
-      svgContent += `<path class="tree-edge" d="M${parent.x},${parent.y} C${parent.x},${midY} ${child.x},${midY} ${child.x},${child.y}" style="stroke-dasharray:300;stroke-dashoffset:300;animation:draw 1.1s ease forwards ${0.15 * li}s"/>`;
-    });
-  }
-
-  // nodes
-  nodePositions.forEach((positions, li) => {
-    positions.forEach((pos, i) => {
-      const r = li === 0 ? 10 : 6 - li * 0.6;
-      const rootClass = li === 0 ? " root" : "";
-      svgContent += `<circle class="tree-node${rootClass}" cx="${pos.x}" cy="${pos.y}" r="${r}" style="opacity:0;animation:fadein 0.5s ease forwards ${0.25 * li + 0.3}s"/>`;
-      if (li === 0) {
-        svgContent += `<text class="tree-label" x="${pos.x}" y="${pos.y - 18}" text-anchor="middle">${pos.label}</text>`;
-      } else if (li === 1) {
-        svgContent += `<text class="tree-label" x="${pos.x}" y="${pos.y - 12}" text-anchor="middle">${pos.label}</text>`;
-      }
-    });
-  });
-
-  svg.innerHTML = svgContent;
-
-  // inject keyframes once
-  if (!document.getElementById("tree-keyframes")) {
-    const style = document.createElement("style");
-    style.id = "tree-keyframes";
-    style.textContent = `
-      @keyframes draw { to { stroke-dashoffset: 0; } }
-      @keyframes fadein { to { opacity: 1; } }
-    `;
-    document.head.appendChild(style);
-  }
-}
 
 /* ============================================================
    MOBILE NAV TOGGLE
@@ -160,6 +95,5 @@ function initNavToggle() {
 document.addEventListener("DOMContentLoaded", () => {
   renderProjects();
   renderTagLists();
-  renderTree();
   initNavToggle();
 });
