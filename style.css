@@ -167,6 +167,25 @@ section { position: relative; z-index: 1; }
   flex-wrap: wrap;
 }
 
+.hero-byline {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1.4rem;
+}
+.hero-photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid var(--teal);
+}
+.hero-name {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.02em;
+}
 .btn {
   font-family: var(--mono);
   font-size: 0.85rem;
@@ -347,17 +366,6 @@ section { position: relative; z-index: 1; }
   border-bottom: 1px dashed var(--ink-faint);
   cursor: default;
 }
-
-/* placeholder "add your project" card */
-.project-card.add-card {
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  border-style: dashed;
-  color: var(--ink-faint);
-  min-height: 180px;
-}
-.project-card.add-card:hover { border-color: var(--gold); color: var(--gold); transform: none; }
 
 /* ============================================================
    EXPERIENCE LOG
