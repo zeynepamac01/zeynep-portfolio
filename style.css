@@ -150,8 +150,8 @@ section { position: relative; z-index: 1; }
 }
 
 .hero-photo-lg {
-  width: 96px;
-  height: 96px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--teal);
