@@ -46,7 +46,7 @@ function renderProjects() {
       <div class="project-links">
         ${p.link
           ? `<a href="${p.link}" target="_blank" rel="noopener">${p.linkLabel || "View"}</a>`
-          : `<span class="disabled">Coming soon</span>`}
+          : ``}
       </div>
     </article>
   `).join("") + `
