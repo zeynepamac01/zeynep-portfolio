@@ -16,7 +16,7 @@
   --accent-light: #6F9888;
 
   --gold: #B8893A;
-  
+
 
   --display: 'Roboto', sans-serif;
   --body: 'Roboto', sans-serif;
@@ -57,7 +57,7 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: var(--paper);
+  background: linear-gradient(180deg, #fbfbf8 0%, #f2f4ee 100%);
   color: var(--ink);
   font-family: var(--body);
   font-size: 16px;
