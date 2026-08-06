@@ -61,17 +61,18 @@ body {
 }
 
 /* faint paper grain, purely decorative */
-grain {
+.grain {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.08;
+  opacity: 0.15;
 
   background-image:
-    radial-gradient(var(--line) 0.8px, transparent 0.8px);
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
 
-  background-size: 24px 24px;
+  background-size: 40px 40px;
 }
 
 a { color: inherit; }
