@@ -56,15 +56,11 @@ html { scroll-behavior: smooth; }
 /*background: linear-gradient(180deg, #fbfbf8 0%, #f2f4ee 100%); */
 
 body {
-  margin: 0;
-  background: linear-gradient(180deg, #fbfbf8 0%, #f2f4ee 100%);
-  color: var(--ink);
-  font-family: var(--body);
-  font-size: 16px;
-  line-height: 1.55;
-  -webkit-font-smoothing: antialiased;
-  position: relative;
-  isolation: isolate;
+  background:
+    radial-gradient(circle at top center,
+      rgba(63,106,90,0.10),
+      transparent 45%), 
+    linear-gradient(180deg,#F8F8F5,#F2F4EE);
 }
 
 .grain {
