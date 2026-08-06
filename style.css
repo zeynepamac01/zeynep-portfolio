@@ -57,7 +57,7 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: hotpink;
+  background: linear-gradient(180deg, #fbfbf8 0%, #f2f4ee 100%);
   color: var(--ink);
   font-family: var(--body);
   font-size: 16px;
