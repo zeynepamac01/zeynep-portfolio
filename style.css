@@ -3,15 +3,20 @@
    ============================================================ */
 
 :root {
-  --paper: #EEF0E8;
-  --paper-raised: #e8ecd4;
-  --ink: #1d1e1e;
-  --ink-soft: #4B564D;
-  --ink-faint: #a3a99f;
-  --line: #b4b7a9;
-  --red: #933229;
-  --teal: #2b4f4a;
-  --gold: #C08A2E;
+  --paper: #F8F8F5;
+  --paper-raised: #F0F2EC;
+
+  --ink: #1B1E1C;
+  --ink-soft: #5C665F;
+  --ink-faint: #A4ACA6;
+
+  --line: #D8DDD6;
+
+  --accent: #3F6A5A;
+  --accent-light: #6F9888;
+
+  --gold: #B8893A;
+  
 
   --display: 'Roboto', sans-serif;
   --body: 'Roboto', sans-serif;
