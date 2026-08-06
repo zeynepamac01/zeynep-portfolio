@@ -61,16 +61,17 @@ body {
 }
 
 /* faint paper grain, purely decorative */
-.grain {
+grain {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.4;
+  opacity: 0.08;
+
   background-image:
-    radial-gradient(var(--line) 0.5px, transparent 0.5px);
-  background-size: 3px 3px;
-  mix-blend-mode: multiply;
+    radial-gradient(var(--line) 0.8px, transparent 0.8px);
+
+  background-size: 24px 24px;
 }
 
 a { color: inherit; }
@@ -225,7 +226,6 @@ section { position: relative; z-index: 1; }
   border: 1px solid var(--ink);
 }
 .btn-primary:hover { background: var(--red); border-color: var(--red); }
-
 .btn-ghost {
   border: 1px solid var(--line);
   color: var(--ink);
