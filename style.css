@@ -2,8 +2,8 @@
    TOKENS
    ============================================================ */
 
-html, body {
-  overflow-x: hidden;
+body {
+  overflow-x: clip;
 }
 :root {
   --paper: #EEF0E8;
