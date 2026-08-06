@@ -5,18 +5,17 @@
 :root {
   --paper: #F8F8F5;
   --paper-raised: #F0F2EC;
-
   --ink: #1B1E1C;
   --ink-soft: #5C665F;
   --ink-faint: #A4ACA6;
-
   --line: #D8DDD6;
-
   --accent: #3F6A5A;
   --accent-light: #6F9888;
-
   --gold: #B8893A;
 
+  /* keep these only if the rest of your CSS still uses them */
+  --red: #933229;
+  --teal: #3F6A5A;
 
   --display: 'Roboto', sans-serif;
   --body: 'Roboto', sans-serif;
@@ -85,21 +84,17 @@ main, header, footer {
 }
 
 .underline-btn {
-  position: relative;
   display: inline-block;
   text-decoration: none;
   color: inherit;
+  border-bottom: 1px solid transparent;
   padding-bottom: 2px;
-  background-image: linear-gradient(currentColor, currentColor);
-  background-repeat: no-repeat;
-  background-position: 0 100%;
-  background-size: 0% 2px;
-  transition: background-size 0.2s ease;
+  transition: border-color 0.2s ease;
 }
 
 .underline-btn:hover,
 .underline-btn:focus-visible {
-  background-size: 100% 2px;
+  border-bottom-color: currentColor;
 }
 
 /* ============================================================
