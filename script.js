@@ -7,7 +7,7 @@
 const projects = [
   {
     fig: "Project 01",
-    title: "Human Reference Atlas — Organ Visualization",
+    title: "Human Reference Atlas - Organ Visualizations",
     desc: "A Vega-based pipeline that generates organ-specific multiscale anatomical trees, with reusable Python workflows and config files for future Atlas releases.",
     tags: ["Python", "Vega", "Jupyter"],
     link: "",
