@@ -7,7 +7,7 @@ A static, dependency-free portfolio site (HTML/CSS/JS, no build step).
 - `index.html` — page structure and content
 - `style.css` — all styling
 - `script.js` — renders the project cards, skill tags, and the hero tree diagram
-- `assets/Zeynep_S_Amac_CV.pdf` — your CV, linked from the "Download CV" button
+- `Zeynep_S_Amac_CV.pdf` — your CV, linked from the "Download CV" button
 
 ## Put it on GitHub Pages
 
@@ -52,7 +52,7 @@ just edit the comma-separated string.
 
 ## Swap the CV
 
-Replace `assets/Zeynep_S_Amac_CV.pdf` with an updated file of the same name,
+Replace `Zeynep_S_Amac_CV.pdf` with an updated file of the same name,
 or update the `href` on the "Download CV" button in `index.html` if you rename it.
 
 ## Local preview

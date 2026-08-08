@@ -10,24 +10,24 @@ const projects = [
     title: "Human Reference Atlas - Organ Visualizations",
     desc: "A Vega-based pipeline that generates organ-specific multiscale anatomical trees, with reusable Python workflows and config files for future Atlas releases.",
     tags: ["Python", "Vega", "Jupyter"],
-    link: "",
-    linkLabel: "View repo"
+    link: "project-human-reference-atlas.html",
+    linkLabel: "Read more"
   },
   {
     fig: "Project 02",
     title: "Environmental Awareness Bee Game",
     desc: "A grid-based educational game built in C, using arrays, structs, and file handling to teach environmental decision-making through gameplay.",
     tags: ["C", "Game logic"],
-    link: "",
-    linkLabel: "View repo"
+    link: "project-bee-game.html",
+    linkLabel: "Read more"
   },
   {
     fig: "Project 03",
     title: "Robot Rescue",
     desc: "An educational board game teaching AI literacy and iterative learning to students ages 10–14, presented as a completed prototype to peers and instructors.",
     tags: ["Design", "Education"],
-    link: "",
-    linkLabel: "View writeup"
+    link: "project-robot-rescue.html",
+    linkLabel: "Read more"
   }
 ];
 
@@ -36,7 +36,10 @@ function renderProjects() {
   if (!grid) return;
 
   grid.innerHTML = projects.map(p => `
-    <article class="project-card">
+    <article class="project-card" onclick="window.location.href='${p.link}'">
+      <a class="project-thumb" href="${p.link}" aria-label="${p.title}">
+        <span>${p.fig}</span>
+      </a>
       <p class="project-fig">${p.fig}</p>
       <h3>${p.title}</h3>
       <p class="project-desc">${p.desc}</p>
@@ -44,9 +47,7 @@ function renderProjects() {
         ${p.tags.map(t => `<li>${t}</li>`).join("")}
       </ul>
       <div class="project-links">
-        ${p.link
-          ? `<a href="${p.link}" target="_blank" rel="noopener">${p.linkLabel || "View"}</a>`
-          : ``}
+        <a href="${p.link}">${p.linkLabel || "View"}</a>
       </div>
     </article>
   `).join("");
@@ -88,10 +89,54 @@ function initNavToggle() {
   });
 }
 
+function initThemeToggle() {
+  const savedTheme = localStorage.getItem("theme");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const startingTheme = savedTheme || (prefersDark ? "dark" : "light");
+
+  document.documentElement.dataset.theme = startingTheme;
+
+  const btn = document.querySelector(".theme-toggle");
+  if (!btn) return;
+
+  function applyTheme(theme) {
+    document.documentElement.dataset.theme = theme;
+    const dark = theme === "dark";
+    btn.textContent = dark ? "Light" : "Dark";
+    btn.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
+    btn.setAttribute("aria-pressed", String(dark));
+  }
+
+  applyTheme(startingTheme);
+
+  btn.addEventListener("click", () => {
+    const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    localStorage.setItem("theme", nextTheme);
+    applyTheme(nextTheme);
+  });
+}
+
+function initContactForm() {
+  const form = document.querySelector(".contact-form");
+  if (!form) return;
+
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+    const data = new FormData(form);
+    const email = data.get("email") || "";
+    const subject = data.get("subject") || "";
+    const message = data.get("message") || "";
+    const body = `From: ${email}\n\n${message}`;
+    window.location.href = `mailto:zsamac@iu.edu?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   renderProjects();
   renderTagLists();
   initNavToggle();
+  initThemeToggle();
+  initContactForm();
   initBackToTop();
 });
 
