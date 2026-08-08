@@ -28,6 +28,14 @@ const projects = [
     tags: ["Design", "Education"],
     link: "project-robot-rescue.html",
     linkLabel: "Read more"
+  },
+  {
+    fig: "Project 04",
+    title: "Atlas of Macroscopes Visual Assets",
+    desc: "Visual production work supporting scientific communication for Atlas of Macroscopes, with attention to clarity, hierarchy, and visual consistency.",
+    tags: ["Design", "Visualization"],
+    link: "project-macroscopes.html",
+    linkLabel: "Read more"
   }
 ];
 
@@ -90,9 +98,7 @@ function initNavToggle() {
 }
 
 function initThemeToggle() {
-  const savedTheme = localStorage.getItem("theme");
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const startingTheme = savedTheme || (prefersDark ? "dark" : "light");
+  const startingTheme = "light";
 
   document.documentElement.dataset.theme = startingTheme;
 
@@ -111,7 +117,6 @@ function initThemeToggle() {
 
   btn.addEventListener("click", () => {
     const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-    localStorage.setItem("theme", nextTheme);
     applyTheme(nextTheme);
   });
 }
