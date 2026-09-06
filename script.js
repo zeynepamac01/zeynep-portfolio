@@ -12,7 +12,7 @@ const projects = [
     tags: ["Python", "Vega", "Jupyter"],
     image: "vega_mouth_tree_viz.svg",
     imageAlt: "Mouth anatomical structure tree visualization",
-    imageFit: "contain",
+    imageFit: "cover",
     link: "project-human-reference-atlas.html",
     linkLabel: "Read more"
   },
@@ -45,7 +45,7 @@ const projects = [
     tags: ["Design", "Visualization"],
     image: "large_intestine_vasculature_ftus_vega.svg",
     imageAlt: "Large intestine FTU and VCCF connection visualization",
-    imageFit: "contain",
+    imageFit: "cover",
     link: "project-macroscopes.html",
     linkLabel: "Read more"
   }

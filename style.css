@@ -3,20 +3,20 @@
    ============================================================ */
 
 :root {
-  --paper: #f7f4ef;
-  --paper-raised: #fffaf3;
-  --ink: #22211f;
-  --ink-soft: #62605b;
-  --ink-faint: #948e84;
-  --line: #ddd4c7;
-  --accent: #86664f;
-  --accent-light: #b99678;
-  --gold: #a77b4f;
-  --red: #8f4f45;
-  --teal: #56756a;
-  --link: #6f5a44;
-  --shadow: rgba(45, 38, 30, 0.07);
-  --shadow-strong: rgba(45, 38, 30, 0.12);
+  --paper: #f5f5f7;
+  --paper-raised: #ffffff;
+  --ink: #1d1d1f;
+  --ink-soft: #6e6e73;
+  --ink-faint: #86868b;
+  --line: #d2d2d7;
+  --accent: #0071e3;
+  --accent-light: #2997ff;
+  --gold: #6e6e73;
+  --red: #0071e3;
+  --teal: #0071e3;
+  --link: #0066cc;
+  --shadow: rgba(0, 0, 0, 0.06);
+  --shadow-strong: rgba(0, 0, 0, 0.12);
 
   --display: 'Roboto', sans-serif;
   --body: 'Roboto', sans-serif;
@@ -74,18 +74,12 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 74px;
 }
-/*background: linear-gradient(180deg, #fbfbf8 0%, #f2f4ee 100%); */
-
 body {
   margin: 0;
   min-height: 100vh;
   font-family: var(--body);
   color: var(--ink);
-  background:
-    radial-gradient(circle at top center,
-      rgba(177,150,120,0.16),
-      transparent 45%), 
-    linear-gradient(180deg,var(--paper),var(--paper-raised));
+  background: var(--paper);
   transition: background 0.25s ease, color 0.25s ease;
 }
 
@@ -388,6 +382,7 @@ main, header, footer {
   width: 100%;
   height: 100%;
   background: #fff;
+  transform: scale(1.1);
 }
 .project-thumb-image--cover {
   object-fit: cover;
@@ -752,9 +747,10 @@ main, header, footer {
 
 .project-hero-image {
   display: block;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  margin: 2.4rem 0;
+  width: auto;
+  max-width: 100%;
+  max-height: min(42vh, 360px);
+  margin: 2.4rem auto;
   border: 1px solid var(--line);
   border-radius: 4px;
   background: #fff;
