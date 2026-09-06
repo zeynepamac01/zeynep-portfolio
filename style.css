@@ -74,6 +74,22 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 74px;
 }
+
+@media (min-width: 861px) and (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-snap-type: y mandatory;
+  }
+
+  main > section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .site-footer {
+    scroll-snap-align: end;
+  }
+}
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -327,7 +343,7 @@ main, header, footer {
   padding: clamp(3.5rem, 8vh, 5.5rem) var(--gutter);
   border-top: 1px solid var(--line);
   min-height: calc(100vh - 74px);
-  scroll-margin-top: 74px;
+  scroll-margin-top: 0;
 }
 
 .legend h2, .work h2, .log h2, .involvement h2, .about h2, .contact h2 {
