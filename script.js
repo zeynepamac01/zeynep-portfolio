@@ -92,6 +92,49 @@ function renderTagLists() {
 /* ============================================================
    MOBILE NAV TOGGLE
    ============================================================ */
+
+function initNavToggle() {
+  const btn = document.querySelector(".nav-toggle");
+  const nav = document.querySelector(".main-nav");
+  if (!btn || !nav) return;
+
+  btn.addEventListener("click", () => {
+    const open = nav.classList.toggle("open");
+    btn.setAttribute("aria-expanded", String(open));
+  });
+
+  nav.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("open");
+      btn.setAttribute("aria-expanded", "false");
+    });
+  });
+}
+
+function initThemeToggle() {
+  const startingTheme = "light";
+
+  document.documentElement.dataset.theme = startingTheme;
+
+  const btn = document.querySelector(".theme-toggle");
+  if (!btn) return;
+
+  function applyTheme(theme) {
+    document.documentElement.dataset.theme = theme;
+    const dark = theme === "dark";
+    btn.textContent = dark ? "Light" : "Dark";
+    btn.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
+    btn.setAttribute("aria-pressed", String(dark));
+  }
+
+  applyTheme(startingTheme);
+
+  btn.addEventListener("click", () => {
+    const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    applyTheme(nextTheme);
+  });
+}
+
 function initContactForm() {
   const form = document.querySelector(".contact-form");
   if (!form) return;
@@ -110,6 +153,8 @@ function initContactForm() {
 document.addEventListener("DOMContentLoaded", () => {
   renderProjects();
   renderTagLists();
+  initNavToggle();
+  initThemeToggle();
   initContactForm();
   initBackToTop();
 });

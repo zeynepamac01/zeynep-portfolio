@@ -26,6 +26,23 @@
   --gutter: clamp(1.5rem, 4vw, 4rem);
 }
 
+:root[data-theme="dark"] {
+  --paper: #050507;
+  --paper-raised: #0d0d14;
+  --ink: #f4f1ff;
+  --ink-soft: #c7c3d6;
+  --ink-faint: #838094;
+  --line: #24232f;
+  --accent: #b9a7ff;
+  --accent-light: #e2dcff;
+  --gold: #c8bfff;
+  --red: #d8a7ff;
+  --teal: #97d6ff;
+  --link: #d8ceff;
+  --shadow: rgba(0, 0, 0, 0.34);
+  --shadow-strong: rgba(0, 0, 0, 0.54);
+}
+
 .back-to-top {
   position: fixed;
   bottom: 2rem;
@@ -88,6 +105,15 @@ body {
   color: var(--ink);
   background: var(--paper);
   transition: background 0.25s ease, color 0.25s ease;
+}
+
+:root[data-theme="dark"] body {
+  background:
+    radial-gradient(circle at 18% 12%, rgba(185,167,255,0.18), transparent 16%),
+    radial-gradient(circle at 76% 22%, rgba(151,214,255,0.11), transparent 14%),
+    radial-gradient(circle at 58% 78%, rgba(216,167,255,0.08), transparent 18%),
+    radial-gradient(circle at top center, rgba(255,255,255,0.05), transparent 46%),
+    linear-gradient(180deg,var(--paper),#080810 72%,var(--paper-raised));
 }
 
 .grain {
@@ -167,6 +193,38 @@ main, header, footer {
   transition: width 0.2s ease;
 }
 .main-nav a:not(.nav-cta):hover::after { width: 100%; }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+.nav-toggle span {
+  width: 22px;
+  height: 1.5px;
+  background: var(--ink);
+}
+
+.theme-toggle {
+  font-family: var(--body);
+  font-size: 0.82rem;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.42rem 0.78rem;
+  cursor: pointer;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+}
 
 .nav-cta {
   font-family: var(--mono);
@@ -765,21 +823,28 @@ main, header, footer {
 
 @media (max-width: 860px) {
   .site-header {
-    justify-content: center;
-    padding: 0.75rem 1rem;
+    justify-content: flex-end;
   }
 
   .main-nav {
-    position: static;
+    position: fixed;
+    inset: 64px var(--gutter) auto var(--gutter);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+  }
+
+  .main-nav.open {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 0.45rem 1rem;
-    padding: 0;
-    background: transparent;
-    border: 0;
+  }
+
+  .nav-toggle {
+    display: flex;
   }
 
   .project-detail-grid {
