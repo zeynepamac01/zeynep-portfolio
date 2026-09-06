@@ -382,6 +382,20 @@ main, header, footer {
     repeating-linear-gradient(90deg, color-mix(in srgb, var(--line) 70%, transparent) 0 1px, transparent 1px 18px),
     var(--paper);
 }
+.project-thumb-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+}
+.project-thumb-image--cover {
+  object-fit: cover;
+}
+.project-thumb-image--contain {
+  object-fit: contain;
+  padding: 0.35rem;
+}
 .project-thumb::after {
   content: "";
   position: absolute;
@@ -396,10 +410,7 @@ main, header, footer {
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(circle at 72% 34%, color-mix(in srgb, var(--accent-light) 76%, transparent), transparent 20%),
-    linear-gradient(135deg, color-mix(in srgb, var(--teal) 42%, transparent), color-mix(in srgb, var(--accent) 28%, transparent)),
-    var(--paper-raised);
+  background: color-mix(in srgb, var(--accent-light) 10%, transparent);
   opacity: 0;
   transform: scale(1.04);
   transition: opacity 0.24s ease, transform 0.24s ease;
@@ -411,6 +422,9 @@ main, header, footer {
   font-size: 0.74rem;
   color: var(--ink-soft);
   transition: opacity 0.2s ease;
+  background: color-mix(in srgb, var(--paper-raised) 88%, transparent);
+  padding: 0.28rem 0.45rem;
+  border-radius: 2px;
 }
 .project-thumb:hover::before,
 .project-card:hover .project-thumb::before,
@@ -736,19 +750,15 @@ main, header, footer {
   line-height: 1.65;
 }
 
-.project-hero-placeholder {
+.project-hero-image {
+  display: block;
+  width: 100%;
   aspect-ratio: 16 / 9;
   margin: 2.4rem 0;
   border: 1px solid var(--line);
   border-radius: 4px;
-  background:
-    linear-gradient(135deg, color-mix(in srgb, var(--accent-light) 30%, transparent), transparent 50%),
-    repeating-linear-gradient(90deg, color-mix(in srgb, var(--line) 72%, transparent) 0 1px, transparent 1px 22px),
-    var(--paper-raised);
-  display: flex;
-  align-items: flex-end;
-  padding: 1.2rem;
-  color: var(--ink-soft);
+  background: #fff;
+  object-fit: contain;
 }
 
 .project-detail-grid {

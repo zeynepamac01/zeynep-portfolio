@@ -10,6 +10,9 @@ const projects = [
     title: "Human Reference Atlas - Organ Visualizations",
     desc: "A Vega-based pipeline that generates organ-specific multiscale anatomical trees, with reusable Python workflows and config files for future Atlas releases.",
     tags: ["Python", "Vega", "Jupyter"],
+    image: "vega_mouth_tree_viz.svg",
+    imageAlt: "Mouth anatomical structure tree visualization",
+    imageFit: "contain",
     link: "project-human-reference-atlas.html",
     linkLabel: "Read more"
   },
@@ -18,6 +21,9 @@ const projects = [
     title: "Environmental Awareness Bee Game",
     desc: "A grid-based educational game built in C, using arrays, structs, and file handling to teach environmental decision-making through gameplay.",
     tags: ["C", "Game logic"],
+    image: "Bee_game_ss.png",
+    imageAlt: "Environmental Awareness Bee Game screenshot",
+    imageFit: "cover",
     link: "project-bee-game.html",
     linkLabel: "Read more"
   },
@@ -26,14 +32,20 @@ const projects = [
     title: "Robot Rescue",
     desc: "An educational board game teaching AI literacy and iterative learning to students ages 10–14, presented as a completed prototype to peers and instructors.",
     tags: ["Design", "Education"],
+    image: "robot_rescue_photo.png",
+    imageAlt: "Robot Rescue board game prototype",
+    imageFit: "cover",
     link: "project-robot-rescue.html",
     linkLabel: "Read more"
   },
   {
     fig: "Project 04",
-    title: "Atlas of Macroscopes Visual Assets",
-    desc: "Visual production work supporting scientific communication for Atlas of Macroscopes, with attention to clarity, hierarchy, and visual consistency.",
+    title: "FTU & VCCF Connection Visualization",
+    desc: "A scientific visualization showing connections between functional tissue units and the vascular common coordinate framework.",
     tags: ["Design", "Visualization"],
+    image: "large_intestine_vasculature_ftus_vega.svg",
+    imageAlt: "Large intestine FTU and VCCF connection visualization",
+    imageFit: "contain",
     link: "project-macroscopes.html",
     linkLabel: "Read more"
   }
@@ -46,6 +58,7 @@ function renderProjects() {
   grid.innerHTML = projects.map(p => `
     <article class="project-card" onclick="window.location.href='${p.link}'">
       <a class="project-thumb" href="${p.link}" aria-label="${p.title}">
+        <img src="${p.image}" alt="${p.imageAlt}" class="project-thumb-image project-thumb-image--${p.imageFit}">
         <span>${p.fig}</span>
       </a>
       <p class="project-fig">${p.fig}</p>
