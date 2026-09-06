@@ -15,8 +15,8 @@
 <header class="site-header">
   <nav class="main-nav">
   <a href="#top">Home</a>
-  <a href="#legend">Skills</a>
   <a href="#work">Work</a>
+  <a href="#legend">Skills</a>
   <a href="#log">Experience</a>
   <a href="#involvement">Involvement</a>
   <a href="#about">About</a>
@@ -45,6 +45,15 @@
     <p class="hero-location">Bloomington, Indiana</p>
   </section>
 
+  <!-- ============ PROJECTS (rendered from JS) ============ -->
+  <section id="work" class="work">
+    <p class="eyebrow"></p>
+    <h2>Selected work</h2>
+    <div class="project-grid" id="project-grid">
+      <!-- injected by script.js -->
+    </div>
+  </section>
+
   <!-- ============ LEGEND / SKILLS ============ -->
   <section id="legend" class="legend">
     <p class="eyebrow"></p>
@@ -66,15 +75,6 @@
         <h3>Design &amp; creative</h3>
         <ul class="tag-list" data-tags="Photoshop, Illustrator, Premiere Pro, Lightroom, InDesign, Fusion 360, PrusaSlicer"></ul>
       </div>
-    </div>
-  </section>
-
-  <!-- ============ PROJECTS (rendered from JS) ============ -->
-  <section id="work" class="work">
-    <p class="eyebrow"></p>
-    <h2>Selected work</h2>
-    <div class="project-grid" id="project-grid">
-      <!-- injected by script.js -->
     </div>
   </section>
 
@@ -120,6 +120,17 @@
           <ul>
             <li>Grade assignments and mentor students during class and office hours for a class of 33.</li>
             <li>Guide students through engineering and design fundamentals.</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="log-entry">
+        <div class="log-date"><span>Present</span></div>
+        <div class="log-body">
+          <h3>Intelligent Systems Engineering (ISE) Peer Mentor</h3>
+          <p class="log-org">Indiana University - Intelligent Systems Engineering</p>
+          <ul>
+            <li>Support incoming engineering students through E101 instruction, tutoring, workshops, and mentoring events.</li>
           </ul>
         </div>
       </li>
@@ -242,7 +253,7 @@
   <p class="footer-note">Built with plain HTML, CSS &amp; JS · deploy via GitHub Pages</p>
 </footer>
 
-<script src="script.js"></script>
+<script src="script.js?v=20260906"></script>
 <a href="#top" class="back-to-top" aria-label="Back to top">↑</a>
 </body>
 </html>

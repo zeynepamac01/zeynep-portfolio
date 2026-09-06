@@ -32,7 +32,7 @@ const projects = [
     title: "Robot Rescue",
     desc: "An educational board game teaching AI literacy and iterative learning to students ages 10–14, presented as a completed prototype to peers and instructors.",
     tags: ["Design", "Education"],
-    image: "robot_rescue_photo.png",
+    image: "robot_rescue_photo.png?v=landscape",
     imageAlt: "Robot Rescue board game prototype",
     imageFit: "cover",
     link: "project-robot-rescue.html",
