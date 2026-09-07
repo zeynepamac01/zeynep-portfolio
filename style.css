@@ -763,6 +763,10 @@ main, header, footer {
   font-size: 0.75rem;
   color: var(--ink-faint);
   border-top: 1px solid var(--line);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .project-page {
