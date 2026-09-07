@@ -150,12 +150,44 @@ function initContactForm() {
   });
 }
 
+function initSectionNavigation() {
+  const sections = [...document.querySelectorAll("main > section")];
+  if (sections.length < 2) return;
+
+  let locked = false;
+
+  window.addEventListener("wheel", event => {
+    if (event.ctrlKey || Math.abs(event.deltaY) < 8 || locked) return;
+
+    const headerOffset = document.querySelector(".site-header")?.offsetHeight || 0;
+    const currentIndex = sections.reduce((closest, section, index) => {
+      const distance = Math.abs(section.getBoundingClientRect().top - headerOffset);
+      return distance < closest.distance ? { index, distance } : closest;
+    }, { index: 0, distance: Infinity }).index;
+    const nextIndex = Math.max(0, Math.min(sections.length - 1, currentIndex + Math.sign(event.deltaY)));
+
+    if (nextIndex === currentIndex) return;
+
+    event.preventDefault();
+    locked = true;
+    sections[nextIndex].scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+      block: "start"
+    });
+
+    window.setTimeout(() => {
+      locked = false;
+    }, 950);
+  }, { passive: false });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   renderProjects();
   renderTagLists();
   initNavToggle();
   initThemeToggle();
   initContactForm();
+  initSectionNavigation();
   initBackToTop();
 });
 
