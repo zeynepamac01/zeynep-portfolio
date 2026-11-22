@@ -135,6 +135,100 @@ function initThemeToggle() {
   });
 }
 
+function initNetworkBackground() {
+  const canvas = document.querySelector(".network-background");
+  const context = canvas?.getContext("2d");
+  if (!canvas || !context) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const points = [];
+  let width = 0;
+  let height = 0;
+  let pixelRatio = 1;
+
+  function resize() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.round(width * pixelRatio);
+    canvas.height = Math.round(height * pixelRatio);
+
+    const count = Math.min(150, Math.max(48, Math.round((width * height) / 9000)));
+    points.length = 0;
+    for (let index = 0; index < count; index += 1) {
+      points.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.16,
+        vy: (Math.random() - 0.5) * 0.14,
+        radius: Math.random() < 0.1 ? 2.2 : 0.8 + Math.random() * 0.8,
+      });
+    }
+  }
+
+  function draw() {
+    context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    context.clearRect(0, 0, width, height);
+
+    const dark = document.documentElement.dataset.theme === "dark";
+    const maxDistance = Math.min(136, Math.max(88, width * 0.11));
+
+    if (!reduceMotion) {
+      points.forEach(point => {
+        point.x += point.vx;
+        point.y += point.vy;
+        if (point.x < -3) point.x = width + 3;
+        if (point.x > width + 3) point.x = -3;
+        if (point.y < -3) point.y = height + 3;
+        if (point.y > height + 3) point.y = -3;
+      });
+    }
+
+    for (let index = 0; index < points.length; index += 1) {
+      const point = points[index];
+      for (let next = index + 1; next < points.length; next += 1) {
+        const other = points[next];
+        const distance = Math.hypot(point.x - other.x, point.y - other.y);
+        if (distance < maxDistance) {
+          const strength = (1 - distance / maxDistance) * (dark ? 0.2 : 0.12);
+          context.beginPath();
+          context.moveTo(point.x, point.y);
+          context.lineTo(other.x, other.y);
+          context.strokeStyle = dark
+            ? `rgba(190, 181, 230, ${strength})`
+            : `rgba(78, 82, 94, ${strength})`;
+          context.lineWidth = 0.65;
+          context.stroke();
+        }
+      }
+    }
+
+    points.forEach((point, index) => {
+      context.beginPath();
+      context.arc(point.x, point.y, point.radius, 0, Math.PI * 2);
+      context.fillStyle = dark
+        ? (index % 5 === 0 ? "rgba(205, 196, 255, 0.86)" : "rgba(248, 247, 255, 0.72)")
+        : "rgba(255, 255, 255, 0.96)";
+      context.shadowColor = dark ? "rgba(190, 181, 230, 0.36)" : "rgba(44, 49, 61, 0.22)";
+      context.shadowBlur = dark ? 5 : 3;
+      context.fill();
+      context.shadowBlur = 0;
+    });
+  }
+
+  resize();
+  window.addEventListener("resize", resize);
+  if (reduceMotion) {
+    draw();
+  } else {
+    const animate = () => {
+      draw();
+      window.requestAnimationFrame(animate);
+    };
+    window.requestAnimationFrame(animate);
+  }
+}
+
 function initContactForm() {
   const form = document.querySelector(".contact-form");
   if (!form) return;
@@ -186,6 +280,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderTagLists();
   initNavToggle();
   initThemeToggle();
+  initNetworkBackground();
   initContactForm();
   initSectionNavigation();
   initBackToTop();
