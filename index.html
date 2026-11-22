@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261122-2">
+<link rel="stylesheet" href="style.css?v=20261122-4">
 </head>
 <body>
 
@@ -44,22 +44,20 @@
     <div class="hero-actions">
       <a href="#work" class="underline-btn">See the work</a>
       <a href="./Zeynep_Amac_Resume_26-27.pdf" class="underline-btn" id="resume-link">Download resume</a>
-    </div>
-    <p class="hero-location">Bloomington, Indiana</p>
   </section>
 
   <!-- ============ PROJECTS (rendered from JS) ============ -->
   <section id="work" class="work">
     <p class="eyebrow"></p>
-    <div class="carousel-title-row">
-      <h2>Selected work</h2>
-      <div class="carousel-controls" data-carousel-controls="project-grid" aria-label="Selected work controls">
+    <h2>Selected work</h2>
+    <div class="project-carousel">
+      <div class="project-grid carousel-track" id="project-grid" role="region" aria-label="Selected work projects" tabindex="0">
+        <!-- injected by script.js -->
+      </div>
+      <div class="carousel-controls project-carousel-controls" data-carousel-controls="project-grid" aria-label="Selected work controls">
         <button class="carousel-arrow" type="button" data-carousel-direction="-1" aria-label="Scroll projects left" aria-controls="project-grid">←</button>
         <button class="carousel-arrow" type="button" data-carousel-direction="1" aria-label="Scroll projects right" aria-controls="project-grid">→</button>
       </div>
-    </div>
-    <div class="project-grid carousel-track" id="project-grid" role="region" aria-label="Selected work projects" tabindex="0">
-      <!-- injected by script.js -->
     </div>
   </section>
 
@@ -137,14 +135,8 @@
   <!-- ============ INVOLVEMENT ============ -->
   <section id="involvement" class="involvement">
     <p class="eyebrow"></p>
-    <div class="carousel-title-row">
-      <h2>Community &amp; Involvement</h2>
-      <div class="carousel-controls" data-carousel-controls="involvement-carousel" aria-label="Community involvement controls">
-        <button class="carousel-arrow" type="button" data-carousel-direction="-1" aria-label="Scroll involvement left" aria-controls="involvement-carousel">←</button>
-        <button class="carousel-arrow" type="button" data-carousel-direction="1" aria-label="Scroll involvement right" aria-controls="involvement-carousel">→</button>
-      </div>
-    </div>
-    <div class="involvement-grid carousel-track" id="involvement-carousel" role="region" aria-label="Community involvement items" tabindex="0">
+    <h2>Community &amp; Involvement</h2>
+    <div class="involvement-grid">
       <div class="involvement-block">
         <h3>Community Involvement</h3>
         <ul class="plain-list">
