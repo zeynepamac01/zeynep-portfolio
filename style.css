@@ -696,15 +696,21 @@ main, header, footer {
 .about-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(260px, 0.75fr);
-  align-items: center;
+  align-items: start;
   gap: 3rem;
   margin-top: 2rem;
   min-height: calc(100vh - 260px);
 }
+.about-main {
+  grid-column: 1;
+  grid-row: 1;
+}
 .about-skills {
+  grid-column: 1;
+  grid-row: 2;
   border-top: 1px solid var(--line);
-  margin-top: 3rem;
-  padding-top: 2rem;
+  margin-top: 0;
+  padding-top: 1.5rem;
   scroll-margin-top: 6rem;
 }
 .about-skills h2 {
@@ -712,12 +718,15 @@ main, header, footer {
   margin: 0 0 0.75rem;
 }
 .about-skills .legend-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
   margin-top: 1.5rem;
 }
 .about-main p { color: var(--ink-soft); max-width: 58ch; }
 .about-visual {
   grid-column: 2;
   grid-row: 1 / span 2;
+  align-self: center;
   margin: 0;
 }
 .about-visual img {
@@ -1021,6 +1030,12 @@ main, header, footer {
     gap: 2rem;
   }
 
+  .about-main,
+  .about-skills {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
   .involvement-grid {
     grid-template-columns: 1fr;
   }
@@ -1066,6 +1081,10 @@ main, header, footer {
 
 @media (max-width: 640px) {
   .legend-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-skills .legend-grid {
     grid-template-columns: 1fr;
   }
 
