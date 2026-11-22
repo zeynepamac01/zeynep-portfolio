@@ -382,12 +382,13 @@ main, header, footer {
 }
 .project-carousel-controls {
   position: absolute;
-  top: 5.1rem;
+  top: 50%;
   left: -1.2rem;
   right: -1.2rem;
   height: 42px;
   z-index: 5;
   display: block;
+  transform: translateY(-50%);
   pointer-events: none;
 }
 .project-carousel-controls [data-carousel-direction="-1"] {
