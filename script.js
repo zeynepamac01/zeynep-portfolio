@@ -6,6 +6,13 @@
    ============================================================ */
 const projects = [
   {
+    fig: "Upcoming project",
+    title: "Epidemiology Lab",
+    desc: "Upcoming work with the Laboratory for Computational Epidemiology and Public Health (CEPH).",
+    tags: ["Epidemiology", "Research"],
+    upcoming: true
+  },
+  {
     fig: "Project 01",
     title: "Human Reference Atlas - Organ Visualizations",
     desc: "A Vega-based pipeline that generates organ-specific multiscale anatomical trees, with reusable Python workflows and config files for future Atlas releases.",
@@ -55,23 +62,64 @@ function renderProjects() {
   const grid = document.getElementById("project-grid");
   if (!grid) return;
 
-  grid.innerHTML = projects.map(p => `
-    <article class="project-card" onclick="window.location.href='${p.link}'">
-      <a class="project-thumb" href="${p.link}" aria-label="${p.title}">
-        <img src="${p.image}" alt="${p.imageAlt}" class="project-thumb-image project-thumb-image--${p.imageFit}">
-        <span>${p.fig}</span>
-      </a>
-      <p class="project-fig">${p.fig}</p>
-      <h3>${p.title}</h3>
-      <p class="project-desc">${p.desc}</p>
-      <ul class="project-tags">
-        ${p.tags.map(t => `<li>${t}</li>`).join("")}
-      </ul>
-      <div class="project-links">
-        <a href="${p.link}">${p.linkLabel || "View"}</a>
-      </div>
-    </article>
-  `).join("");
+  grid.innerHTML = projects.map(p => {
+    const thumbnail = p.upcoming
+      ? `<div class="project-thumb project-thumb--upcoming"><span>Upcoming project</span></div>`
+      : `<a class="project-thumb" href="${p.link}" aria-label="${p.title}">
+          <img src="${p.image}" alt="${p.imageAlt}" class="project-thumb-image project-thumb-image--${p.imageFit}">
+          <span>${p.fig}</span>
+        </a>`;
+    const cardAction = p.link ? `onclick="window.location.href='${p.link}'"` : "";
+    const projectLink = p.link
+      ? `<a href="${p.link}">${p.linkLabel || "View"}</a>`
+      : `<span class="project-coming-soon">In development</span>`;
+
+    return `
+      <article class="project-card${p.upcoming ? " project-card--upcoming" : ""}" ${cardAction}>
+        ${thumbnail}
+        <p class="project-fig">${p.fig}</p>
+        <h3>${p.title}</h3>
+        <p class="project-desc">${p.desc}</p>
+        <ul class="project-tags">
+          ${p.tags.map(t => `<li>${t}</li>`).join("")}
+        </ul>
+        <div class="project-links">${projectLink}</div>
+      </article>
+    `;
+  }).join("");
+}
+
+function initCarousels() {
+  document.querySelectorAll("[data-carousel-controls]").forEach(controls => {
+    const track = document.getElementById(controls.dataset.carouselControls);
+    if (!track) return;
+
+    const buttons = [...controls.querySelectorAll("[data-carousel-direction]")];
+    const updateButtons = () => {
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      buttons.forEach(button => {
+        const direction = Number(button.dataset.carouselDirection);
+        button.disabled = direction < 0 ? track.scrollLeft <= 1 : track.scrollLeft >= maxScroll - 1;
+      });
+    };
+
+    buttons.forEach(button => {
+      button.addEventListener("click", () => {
+        const card = track.firstElementChild;
+        if (!card) return;
+        const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+        const direction = Number(button.dataset.carouselDirection);
+        track.scrollBy({
+          left: direction * (card.getBoundingClientRect().width + gap),
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"
+        });
+      });
+    });
+
+    track.addEventListener("scroll", updateButtons, { passive: true });
+    window.addEventListener("resize", updateButtons);
+    updateButtons();
+  });
 }
 
 /* ============================================================
@@ -190,7 +238,7 @@ function initNetworkBackground() {
         const other = points[next];
         const distance = Math.hypot(point.x - other.x, point.y - other.y);
         if (distance < maxDistance) {
-          const strength = (1 - distance / maxDistance) * (dark ? 0.2 : 0.12);
+          const strength = (1 - distance / maxDistance) * (dark ? 0.2 : 0.22);
           context.beginPath();
           context.moveTo(point.x, point.y);
           context.lineTo(other.x, other.y);
@@ -205,12 +253,12 @@ function initNetworkBackground() {
 
     points.forEach((point, index) => {
       context.beginPath();
-      context.arc(point.x, point.y, point.radius, 0, Math.PI * 2);
+      context.arc(point.x, point.y, point.radius + (dark ? 0 : 0.25), 0, Math.PI * 2);
       context.fillStyle = dark
         ? (index % 5 === 0 ? "rgba(205, 196, 255, 0.86)" : "rgba(248, 247, 255, 0.72)")
         : "rgba(255, 255, 255, 0.96)";
-      context.shadowColor = dark ? "rgba(190, 181, 230, 0.36)" : "rgba(44, 49, 61, 0.22)";
-      context.shadowBlur = dark ? 5 : 3;
+      context.shadowColor = dark ? "rgba(190, 181, 230, 0.36)" : "rgba(44, 49, 61, 0.48)";
+      context.shadowBlur = 5;
       context.fill();
       context.shadowBlur = 0;
     });
@@ -278,6 +326,7 @@ function initSectionNavigation() {
 document.addEventListener("DOMContentLoaded", () => {
   renderProjects();
   renderTagLists();
+  initCarousels();
   initNavToggle();
   initThemeToggle();
   initNetworkBackground();
