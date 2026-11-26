@@ -67,7 +67,6 @@ function renderProjects() {
       ? `<div class="project-thumb project-thumb--upcoming"><span>Upcoming project</span></div>`
       : `<a class="project-thumb" href="${p.link}" aria-label="${p.title}">
           <img src="${p.image}" alt="${p.imageAlt}" class="project-thumb-image project-thumb-image--${p.imageFit}">
-          <span>${p.fig}</span>
         </a>`;
     const cardAction = p.link ? `onclick="window.location.href='${p.link}'"` : "";
     const projectLink = p.link
@@ -87,39 +86,6 @@ function renderProjects() {
       </article>
     `;
   }).join("");
-}
-
-function initCarousels() {
-  document.querySelectorAll("[data-carousel-controls]").forEach(controls => {
-    const track = document.getElementById(controls.dataset.carouselControls);
-    if (!track) return;
-
-    const buttons = [...controls.querySelectorAll("[data-carousel-direction]")];
-    const updateButtons = () => {
-      const maxScroll = track.scrollWidth - track.clientWidth;
-      buttons.forEach(button => {
-        const direction = Number(button.dataset.carouselDirection);
-        button.disabled = direction < 0 ? track.scrollLeft <= 1 : track.scrollLeft >= maxScroll - 1;
-      });
-    };
-
-    buttons.forEach(button => {
-      button.addEventListener("click", () => {
-        const card = track.firstElementChild;
-        if (!card) return;
-        const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
-        const direction = Number(button.dataset.carouselDirection);
-        track.scrollBy({
-          left: direction * (card.getBoundingClientRect().width + gap),
-          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"
-        });
-      });
-    });
-
-    track.addEventListener("scroll", updateButtons, { passive: true });
-    window.addEventListener("resize", updateButtons);
-    updateButtons();
-  });
 }
 
 /* ============================================================
@@ -326,7 +292,6 @@ function initSectionNavigation() {
 document.addEventListener("DOMContentLoaded", () => {
   renderProjects();
   renderTagLists();
-  initCarousels();
   initNavToggle();
   initThemeToggle();
   initNetworkBackground();
